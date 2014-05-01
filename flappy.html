@@ -1,0 +1,49 @@
+<script src="assets/js/processing.js"></script>
+<script type="text/processing" data-processing-target="mycanvas">
+
+// Setup the Processing Canvas
+int h,m,s;
+int nX, nY;
+int height;
+int counter, counterTwo;
+void setup(){
+  size( 500, 500);
+  strokeWeight( 0 );
+  frameRate( 15 );
+  textSize(90);
+  counter = 500;
+}
+
+// Main draw loop
+void draw(){
+  // Fill canvas grey
+  background( 100 );
+  h= hour();
+  m= minute();
+  s= second();
+  //height = rand0m(1,100);
+  textSize(40);
+  if (s < 10) {
+    s = "0"+ s;
+  }
+  if (m < 10) {
+    m = "0"+ m;
+  }
+  time= h + ":" + m + ":" + s
+  // fill(235,0,64);
+  counter--;
+  if ( counter === 0) { counter = 500}
+  textSize(30);
+  text(time,10,50);
+  text(counter,10,80);
+  rect(counter,250,20,300); // bottom wall
+  rect(counter,-10,20,100); // top wall
+  rect(nX,nY,100,100); // bouncy rectangle
+
+}
+void mouseMoved() {
+  nX = mouseX;
+  nY = mouseY;
+  }
+</script>
+<canvas id="mycanvas"></canvas>
