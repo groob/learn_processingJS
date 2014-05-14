@@ -5,6 +5,7 @@
   int h,m,s;
   int nX, nY;
   int height;
+  int posY = 0;
   int counter, counterTwo;
   var randomnumber=Math.floor(Math.random()*8);
   var randomnumberTwo = Math.floor(Math.random()*8);
@@ -36,15 +37,26 @@
       randomnumber = Math.floor(Math.random()*8);
       randomnumberTwo = Math.floor(Math.random()*8);
     }
+    if (posY >= randomnumber * 50 ) {
+      posY = randomnumber * 51;
+    }
+    else {
+      posY++;
+    }
     text(time,10,50); // clock
-    rect(nX,nY,120,92); // bird
     box(counter,randomnumber);
-    box(counter+300,randomnumberTwo);
+    // box(counter+300,randomnumberTwo);
+    bird(0,posY);
 
   }
   void mouseMoved() {
     nX = mouseX;
     nY = mouseY;
+  }
+  void bird(nX,posY) {
+    rect(nX,posY,120,92); // bird
+    rect(nX+90,posY,30,30); // bird
+    rect(nX+90,posY+62,30,30); // bird
   }
   void box(num,rand) {
     for (int i = 0; i<500; i+=50;){
